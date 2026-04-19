@@ -28,3 +28,14 @@ coverage
 *.sw?
 
 *.tsbuildinfo
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+target/
+.idea/
+*.iml
+.gradle/
+build/

@@ -1,0 +1,52 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: xuebiBlockChain
+  server:
+    servlet:
+      session:
+        timeout: 7d  # 7天
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/xuebiChain?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    username: root
+    password: yyjyroot
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      #password: root   # 如果本地 Redis 无密码，删除此行
+      lettuce:
+        pool:
+          max-active: 8
+          max-idle: 8
+          min-idle: 0
+          max-wait: 1000ms
+  jackson:
+    default-property-inclusion: non_null
+
+mybatis-plus:
+  mapper-locations: classpath*:mapper/*.xml
+  type-aliases-package: yin.xuebiblockchain.Pojo
+
+logging:
+  level:
+    yin: debug
+
+mybatis:
+  mapper-locations: classpath:yin/xuebiblockchain/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+# 本地临时 OSS 配置（防止 placeholder 报错）
+aliyun:
+  oss:
+    endpoint: http://localhost:9000
+    access-key-id: test
+    access-key-secret: test
+    bucket-name: test-bucket
+    file-host: avatar
+
+
